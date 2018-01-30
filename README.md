@@ -8,6 +8,6 @@ We use [Snoostorm](https://github.com/MayorMonty/Snoostorm) and [Snoowrap](https
 
 v`Major`.`Minor`.`patch`
 
-Follows the same rules as [npm](https://not-an-aardvark.github.io/snoowrap/index.html) aka [semver versioning](https://semver.org/)
+Follows the same rules as [npm](https://github.com/Spaceface16518/strat-collector/blob/master/README.md#some-links-may-not-work-yet-you-may-be-directed-here-if-you-click-on-a-link-that-does-not-work) aka [semver versioning](https://semver.org/)
 
 #### Some links may not work yet. You may be directed here if you click on a link that does not work.
