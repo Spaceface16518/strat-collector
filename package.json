@@ -1,0 +1,35 @@
+{
+  "name": "strat-collector",
+  "version": "1.0.0",
+  "description": "Combs through a specific subreddit for posts with over a certain threshold in comments. It then adds them to a database.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spaceface16518/strat-collector.git"
+  },
+  "keywords": [
+    "Halo",
+    "strat",
+    "reddit"
+  ],
+  "contributors": [
+    {
+      "name": "Spaceface16518",
+      "email": "tirma.eithar@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Spaceface16518/strat-collector/issues"
+  },
+  "homepage": "https://github.com/Spaceface16518/strat-collector#readme",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "snoostorm": "0.0.5",
+    "snoowrap": "^1.15.2"
+  }
+}
