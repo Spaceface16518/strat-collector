@@ -1,4 +1,4 @@
-require('dotenv').config;
+require('dotenv').config();
 const snoowrap = require('snoowrap');
 const snoostorm = require('snoostorm');
 let cred = { // Short for constructor credentials
@@ -18,13 +18,13 @@ const wrap = new snoowrap({
 
 const client = new snoostorm(wrap);
 
-const queryOptions = {
-  subreddit: 'Halo',
+const queryOptions: object = {
+  subreddit: 'all',
   results: 25, // Number of results collected per query
 }
 
 const streamPost = client.SubmissionStream(queryOptions)
 
-streamPost.on('post', (post) => {
+streamPost.on('post', (post: object) => {
   console.log(post) // NOTE: right now just log to console, but this is where the post will be processed.
 })
