@@ -4,8 +4,8 @@ const snoostorm = require('snoostorm');
 let cred = { // Short for constructor credentials
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET,
-  usr: 'Spaceface16518',
-  pass: 'redditbot'
+  usr: process.env.USER,
+  pass: process.env.PASS
 }
 const wrap = new snoowrap({
   userAgent: 'Halo-Strat-Collector',
