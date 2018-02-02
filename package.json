@@ -4,10 +4,10 @@
   "description": "Combs through a specific subreddit for posts with over a certain threshold in comments. It then adds them to a database.",
   "main": "app.js",
   "scripts": {
-    "test": "npm run build; npm run launch",
-    "start": "npm run build; node app.js",
-    "build": "tsc app.ts",
-    "launch": "node app.js"
+    "test": "sh ./scripts/test.sh",
+    "start": "npm run build && npm run launch",
+    "build": "sh ./scripts/build.sh",
+    "launch": "sh ./scripts/launch.sh"
   },
   "repository": {
     "type": "git",
