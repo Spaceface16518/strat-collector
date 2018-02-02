@@ -25,6 +25,6 @@ const queryOptions: object = {
 
 const streamPost = client.SubmissionStream(queryOptions)
 
-streamPost.on('post', (post: object) => {
+streamPost.on('post', function(post: object): void {
   console.log(post) // NOTE: right now just log to console, but this is where the post will be processed.
 })
