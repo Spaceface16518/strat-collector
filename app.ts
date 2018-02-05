@@ -1,13 +1,12 @@
 require('dotenv').config();
 const snoowrap = require('snoowrap');
-const snoostorm = require('snoostorm');
 let cred = { // Short for constructor credentials
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET,
-  usr: process.env.USER,
-  pass: process.env.PASS
+  usr: process.env.USERNAME,
+  pass: process.env.PASSWORD
 }
-const wrap = new snoowrap({
+const r = new snoowrap({
   userAgent: 'Halo-Strat-Collector',
   clientId: cred.id,
   clientSecret: cred.secret,
@@ -16,15 +15,20 @@ const wrap = new snoowrap({
 
 })
 
-const client = new snoostorm(wrap);
-
 const queryOptions: object = {
-  subreddit: 'all',
-  results: 25, // Number of results collected per query
+  subreddit: 'Halo_Strat_Roulette',
+  results: 1, // Number of results collected per query
 }
 
-const streamPost = client.SubmissionStream(queryOptions)
+function getTags(submission: object): string[] {}
 
-streamPost.on('post', function(post: object): void {
-  console.log(post) // NOTE: right now just log to console, but this is where the post will be processed.
-})
+console.log('Running...')
+r.getSubreddit("Halo_Strat_Roulette")
+  .getTop({ time: "all" })
+  .then(allSubmissions => {
+    for (let i = 0; i < allSubmissions.length; i++) {
+      const submission = allSubmissions[i];
+      console.log(submission.title);
+      getTags(submission);
+    }
+  });
