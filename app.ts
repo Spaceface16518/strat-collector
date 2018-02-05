@@ -1,6 +1,6 @@
 require("dotenv").config();
-const snoowrap = require("snoowrap");
-const proc = require("./modules/process.js");
+const snoowrap: any = require("snoowrap");
+const proc: any = require("./modules/process.js");
 function printNoNewline(text: string): void {
   process.stdout.write(text);
 }
@@ -16,7 +16,7 @@ let cred: object = {
 console.log("done");
 
 printNoNewline("accessing reddit...");
-const r = new snoowrap({
+const r: any = new snoowrap({
   userAgent: "Halo-Strat-Collector",
   clientId: cred.id,
   clientSecret: cred.secret,
