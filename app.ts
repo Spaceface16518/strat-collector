@@ -1,6 +1,7 @@
 require("dotenv").config();
 const snoowrap: any = require("snoowrap");
 const proc: any = require("./modules/process.js");
+const ex: any = require("./modules/export.js");
 function printNoNewline(text: string): void {
   process.stdout.write(text);
 }
