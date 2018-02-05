@@ -1,4 +1,5 @@
 require('dotenv').config();
+const proc = require('./modules/process')
 const snoowrap = require('snoowrap');
 const snoostorm = require('snoostorm');
 let cred = { // Short for constructor credentials
