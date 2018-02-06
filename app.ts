@@ -41,6 +41,7 @@ r
     for (let i: number = 0; i < allSubmissions.length; i++) {
       const submission: object = allSubmissions[i];
       let data: any = proc.processPost(submission);
+      ex.preview(data)
     }
   });
 console.log("Done");
