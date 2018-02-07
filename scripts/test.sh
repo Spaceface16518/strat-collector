@@ -1,1 +1,0 @@
-echo "Script not available"
