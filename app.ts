@@ -7,7 +7,7 @@ function printNoNewline(text: string): void {
 }
 
 printNoNewline("configuring...");
-let cred: object = {
+let cred: any = {
   // Short for constructor credentials
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET,
