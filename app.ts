@@ -1,12 +1,13 @@
 require("dotenv").config();
 const snoowrap: any = require("snoowrap");
 const proc: any = require("./modules/process.js");
+const ex: any = require("./modules/export.js");
 function printNoNewline(text: string): void {
   process.stdout.write(text);
 }
 
 printNoNewline("configuring...");
-let cred: object = {
+let cred: any = {
   // Short for constructor credentials
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET,
