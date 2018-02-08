@@ -51,4 +51,4 @@ r
 console.log("Done");
 
 printNoNewline('Printing from MongoDB Stratbase...');
-console.log(mongo.findAll);
+console.log(mongo.findAll(cred.mongoPass);
