@@ -50,5 +50,5 @@ r
   });
 console.log("Done");
 
-printNoNewline('Accessing MongoDB Stratbase...')
-mongo.
+printNoNewline('Printing from MongoDB Stratbase...');
+console.log(mongo.findAll);
