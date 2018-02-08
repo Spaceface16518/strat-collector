@@ -13,7 +13,8 @@ let cred: any = {
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET,
   usr: process.env.USERNAME,
-  pass: process.env.PASSWORD
+  pass: process.env.PASSWORD,
+  mongoPass: process.env.MONGODBPASSWORD
 };
 console.log("done");
 
@@ -42,6 +43,12 @@ r
     for (let i: number = 0; i < allSubmissions.length; i++) {
       const submission: object = allSubmissions[i];
       let data: any = proc.processPost(submission);
+      if(mongo.check(cred.mongoPass, data) === true){
+        mongo.entry(cred.mongoPass, data)
+      }
     }
   });
 console.log("Done");
+
+printNoNewline('Accessing MongoDB Stratbase...')
+mongo.

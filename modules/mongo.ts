@@ -50,3 +50,20 @@ module.exports.find = (mongoPassword: string, queryId: string): object => {
   });
   return q;
 };
+
+module.exports.findAll = (mongoPassword: string): object => {
+  var MongoClient: any = require("mongodb").MongoClient;
+
+  var uri: string = `mongodb+srv://Spaceface16518:<${mongoPassword}>@stratbase-rncqk.mongodb.net/test`;
+  let q: undefined;
+  MongoClient.connect(uri, (err, client): void => {
+    if (err) throw err;
+    const collection: any = client.db("strats").collection("strats");
+    collection.find({}).toArray((err, result): void => {
+      if (err) throw err;
+      q = result;
+    });
+    client.close();
+  });
+  return q;
+};
