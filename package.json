@@ -32,6 +32,7 @@
   "homepage": "https://github.com/Spaceface16518/strat-collector#readme",
   "dependencies": {
     "dotenv": "^5.0.0",
+    "mongodb": "^3.0.2",
     "snoowrap": "^1.15.2",
     "typescript": "^2.7.1"
   }
