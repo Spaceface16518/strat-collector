@@ -16,7 +16,7 @@ module.exports.entry = (mongoPassword: string, entry: object): void => {
 module.exports.check = (mongoPassword: string, queryObject: { id: string }): boolean => {
   var MongoClient: any = require("mongodb").MongoClient;
 
-  var uri: string = `mongodb+srv://Spaceface16518:<${mongoPassword}>@stratbase-rncqk.mongodb.net/test`;
+  var uri: string = encodeURIComponent("mongodb+srv://Spaceface16518:" + mongoPassword + "@stratbase-rncqk.mongodb.net/strats");
   let r: undefined;
   MongoClient.connect(uri, (err, client): void => {
     if (err) throw err;
@@ -54,11 +54,11 @@ module.exports.find = (mongoPassword: string, queryId: string): object => {
 module.exports.findAll = (mongoPassword: string): object => {
   var MongoClient: any = require("mongodb").MongoClient;
 
-  var uri: string = `mongodb+srv://Spaceface16518:<${mongoPassword}>@stratbase-rncqk.mongodb.net/test`;
+  var uri: string = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/test`;
   let q: undefined;
   MongoClient.connect(uri, (err, client): void => {
     if (err) throw err;
-    const collection: any = client.db("strats").collection("strats");
+    const collection: any = client.db("Strats").collection("test");
     collection.find({}).toArray((err, result): void => {
       if (err) throw err;
       q = result;

@@ -14,7 +14,7 @@ let cred: any = {
   secret: process.env.CLIENT_SECRET,
   usr: process.env.USERNAME,
   pass: process.env.PASSWORD,
-  mongoPass: process.env.MONGODBPASSWORD
+  mongoPass: encodeURIComponent(process.env.MONGODBPASSWORD)
 };
 console.log("done");
 
@@ -51,4 +51,4 @@ r
 console.log("Done");
 
 printNoNewline('Printing from MongoDB Stratbase...');
-console.log(mongo.findAll);
+console.log(mongo.findAll(cred.mongoPass));
