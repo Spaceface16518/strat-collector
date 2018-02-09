@@ -10,4 +10,11 @@ v`Major`.`Minor`.`patch`
 
 Follows the same rules as [npm](https://github.com/Spaceface16518/strat-collector/blob/master/README.md#some-links-may-not-work-yet-you-may-be-directed-here-if-you-click-on-a-link-that-does-not-work) aka [semver versioning](https://semver.org/)
 
+## Development
+
+Some rules:
+
+1. Start your own branch, master branch deploys to heroku
+2. Please make issues and PR's descriptive and insightful. Everyone should know what the change is going to do before they approve it.
+
 #### Some links may not work yet. You may be directed here if you click on a link that does not work.
