@@ -13,10 +13,15 @@ module.exports.entry = (mongoPassword: string, entry: object): void => {
   });
 };
 
-module.exports.check = (mongoPassword: string, queryObject: { id: string }): boolean => {
+module.exports.check = (
+  mongoPassword: string,
+  queryObject: { id: string }
+): boolean => {
   var MongoClient: any = require("mongodb").MongoClient;
 
-  var uri: string = encodeURIComponent(`mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/strats`);
+  var uri: string = encodeURIComponent(
+    `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/strats`
+  );
   let r: undefined;
   MongoClient.connect(uri, (err, client): void => {
     if (err) throw err;
@@ -27,11 +32,11 @@ module.exports.check = (mongoPassword: string, queryObject: { id: string }): boo
     });
     client.close();
   });
-  if (typeof r !== null || typeof r !== undefined && r.length > 1) {
+  if (typeof r !== null || (typeof r !== undefined && r.length > 1)) {
     return false;
   } else {
-    return true
-  };
+    return true;
+  }
 };
 
 module.exports.find = (mongoPassword: string, queryId: string): object => {
@@ -54,7 +59,8 @@ module.exports.find = (mongoPassword: string, queryId: string): object => {
 module.exports.findAll = (mongoPassword: string): object => {
   var MongoClient: any = require("mongodb").MongoClient;
 
-  var uri: string = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/test`;
+  var uri: string = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/Test`;
+  // IDEA: try using 173.175.251.40/32 instead for link
   let q: undefined;
   MongoClient.connect(uri, (err, client): void => {
     if (err) throw err;
