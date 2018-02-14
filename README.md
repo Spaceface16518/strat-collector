@@ -10,6 +10,8 @@ v`Major`.`Minor`.`patch`
 
 Follows the same rules as [npm](https://github.com/Spaceface16518/strat-collector/blob/master/README.md#some-links-may-not-work-yet-you-may-be-directed-here-if-you-click-on-a-link-that-does-not-work) aka [semver versioning](https://semver.org/)
 
+For pre-release versioning, refer to [issue #15](https://github.com/Spaceface16518/strat-collector/issues/15).
+
 ## Development
 
 Some rules:
