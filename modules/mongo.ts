@@ -30,16 +30,16 @@ module.exports.findAll = ({
     { collection: "Test" }
   );
   var Test = mongo.model("Test", schema, "Test");
-var doc = new Test({
-  title: "Test no 3",
-  author: {name: "Alien"},
-  body: "This is the third test, made (hopefully) by the application",
-  upvotes: 5,
-  downvotes: 0,
-  gilded: false,
-  netUps: 5
-})
-doc.save()
+  var doc = new Test({
+    title: "Test no 3",
+    author: { name: "Alien" },
+    body: "This is the third test, made (hopefully) by the application",
+    upvotes: 5,
+    downvotes: 0,
+    gilded: false,
+    netUps: 5
+  });
+  doc.save();
   Test.find({}, (err, result) => {
     if (!err) {
       console.log(result);
