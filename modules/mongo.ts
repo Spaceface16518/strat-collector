@@ -1,75 +1,73 @@
-module.exports.entry = (mongoPassword: string, entry: object): void => {
-  var MongoClient = require("mongodb").MongoClient;
-
-  var uri = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/test`;
-  MongoClient.connect(uri, (err, client): void => {
-    if (err) throw err;
-    const collection = client.db("Strats").collection("test");
-    collection.insertOne(entry, (err, res) => {
-      if (err) throw err;
-      console.log("An entry was pushed to the Stratbase");
-    });
-    client.close();
+module.exports.findAll = ({
+  mongoPass, // Password for mongodb
+  model // The model used for queries, usually imported from another module
+}: {
+  mongoPass: string;
+  model: any;
+}): any => {
+  let uri = `mongodb+srv://Spaceface16518:${mongoPass}@stratbase-rncqk.mongodb.net/test`; // Set database uri
+  const mongo = require("mongoose"); // Import mongoose
+  mongo.connect(uri); // Connect to mongo database using uri
+  let db = mongo.connection; // Sustain connection by assigning it a memory address/variable
+  // Report success on successful connection
+  db.on("error", err => {
+    console.error.bind(console, "connection error"); // "bind" binds the error to this function for reference
   });
-};
-
-module.exports.check = (
-  mongoPassword: string,
-  queryObject: { id: string }
-): boolean => {
-  var MongoClient: any = require("mongodb").MongoClient;
-
-  var uri: string = encodeURIComponent(
-    `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/strats`
+  // On open, report successful connection
+  db.once("open", () => {
+    console.log("connection successful");
+  });
+  let schema = new mongo.Schema(
+    {
+      title: String,
+      author: { name: String },
+      body: String,
+      upvotes: Number,
+      downvotes: Number,
+      gilded: Boolean,
+      netUps: Number
+    },
+    { collection: "Test" }
   );
-  let r: undefined;
-  MongoClient.connect(uri, (err, client): void => {
-    if (err) throw err;
-    const collection: any = client.db("Strats").collection("test");
-    collection.find({ id: queryObject.id }).toArray((err, result): void => {
-      if (err) throw err;
-      r = result;
-    });
-    client.close();
+  var Test = mongo.model("Test", schema, "Test");
+var doc = new Test({
+  title: "Test no 3",
+  author: {name: "Alien"},
+  body: "This is the third test, made (hopefully) by the application",
+  upvotes: 5,
+  downvotes: 0,
+  gilded: false,
+  netUps: 5
+})
+doc.save()
+  Test.find({}, (err, result) => {
+    if (!err) {
+      console.log(result);
+    } else {
+      throw err;
+    }
   });
-  if (typeof r !== null || (typeof r !== undefined && r.length > 1)) {
-    return false;
-  } else {
-    return true;
-  }
 };
 
-module.exports.find = (mongoPassword: string, queryId: string): object => {
-  var MongoClient: any = require("mongodb").MongoClient;
-
-  var uri: string = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/test`;
-  let q: undefined;
-  MongoClient.connect(uri, (err, client): void => {
-    if (err) throw err;
-    const collection: any = client.db("Strats").collection("test");
-    collection.find({ id: queryId }).toArray((err, result): void => {
-      if (err) throw err;
-      q = result;
-    });
-    client.close();
+module.exports.model = () => {
+  // Set schema
+  let schema = new require("mongoose").Schema({
+    title: String,
+    author: { name: String },
+    body: String,
+    upvotes: Number,
+    downvotes: Number,
+    gilded: Boolean,
+    netUps: Number
   });
-  return q;
-};
-
-module.exports.findAll = (mongoPassword: string): object => {
-  var MongoClient: any = require("mongodb").MongoClient;
-
-  var uri: string = `mongodb+srv://Spaceface16518:${mongoPassword}@stratbase-rncqk.mongodb.net/Test`;
-  // IDEA: try using 173.175.251.40/32 instead for link
-  let q: undefined;
-  MongoClient.connect(uri, (err, client): void => {
-    if (err) throw err;
-    const collection: any = client.db("Strats").collection("test");
-    collection.find({}).toArray((err, result): void => {
-      if (err) throw err;
-      q = result;
-    });
-    client.close();
-  });
-  return q;
+  // Work in progress
+  /*schema.methods.getNetUps = (): void => {
+    return this.model('table').find({}, 'upvotes downvotes', (err, table) => {
+      if(err) {console.error.bind(console, 'error getting net upvotes')}
+      this.model('table').find({}).
+    })
+  }*/
+  // Set model
+  let model = require("mongoose").model("Test", schema);
+  return schema;
 };

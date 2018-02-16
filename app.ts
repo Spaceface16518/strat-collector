@@ -36,7 +36,7 @@ const queryOptions: object = {
 console.log("done");
 
 printNoNewline("Collecting posts...");
-r
+/*r
   .getSubreddit("Halo_Strat_Roulette")
   .getTop({ time: "all" })
   .then(allSubmissions => {
@@ -47,8 +47,8 @@ r
         mongo.entry(cred.mongoPass, data)
       }
     }
-  });
+  });*/
 console.log("Done");
 
 printNoNewline('Printing from MongoDB Stratbase...');
-console.log(mongo.findAll(cred.mongoPass));
+console.log(mongo.findAll({mongoPass: cred.mongoPass, model: mongo.model}));
