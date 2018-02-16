@@ -1,9 +1,7 @@
 module.exports.findAll = ({
-  mongoPass, // Password for mongodb
-  model // The model used for queries, usually imported from another module
+  mongoPass // Password for mongodb
 }: {
   mongoPass: string;
-  model: any;
 }): any => {
   let uri = `mongodb+srv://Spaceface16518:${mongoPass}@stratbase-rncqk.mongodb.net/test`; // Set database uri
   const mongo = require("mongoose"); // Import mongoose
@@ -48,26 +46,4 @@ module.exports.findAll = ({
     }
   });
 };
-
-module.exports.model = () => {
-  // Set schema
-  let schema = new require("mongoose").Schema({
     title: String,
-    author: { name: String },
-    body: String,
-    upvotes: Number,
-    downvotes: Number,
-    gilded: Boolean,
-    netUps: Number
-  });
-  // Work in progress
-  /*schema.methods.getNetUps = (): void => {
-    return this.model('table').find({}, 'upvotes downvotes', (err, table) => {
-      if(err) {console.error.bind(console, 'error getting net upvotes')}
-      this.model('table').find({}).
-    })
-  }*/
-  // Set model
-  let model = require("mongoose").model("Test", schema);
-  return schema;
-};

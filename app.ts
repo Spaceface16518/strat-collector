@@ -36,18 +36,7 @@ const queryOptions: object = {
 console.log("done");
 
 printNoNewline("Collecting posts...");
-/*r
-  .getSubreddit("Halo_Strat_Roulette")
-  .getTop({ time: "all" })
-  .then(allSubmissions => {
-    for (let i: number = 0; i < allSubmissions.length; i++) {
-      const submission: object = allSubmissions[i];
-      let data: any = proc.processPost(submission);
-      if(mongo.check(cred.mongoPass, data) === true){
-        mongo.entry(cred.mongoPass, data)
-      }
-    }
-  });*/
+/*r.getSubreddit("Halo_Strat_Roulette").getTop({time:"all"}).then(allSubmissions=>{for(leti:number=0;i<allSubmissions.length;i++){const submission:object=allSubmissions[i];letdata:any=proc.processPost(submission);if(mongo.check(cred.mongoPass,data)===true){mongo.entry(cred.mongoPass,data)}}});*/
 console.log("Done");
 
 printNoNewline("Printing from MongoDB Stratbase...");
