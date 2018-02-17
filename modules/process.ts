@@ -8,11 +8,11 @@ module.exports.processPost = function(post: {title: string; author: {name: strin
   data.tags = getTags(data.body);
   data.upvotes = post.ups;
   data.downvotes = post.downs;
-  data.gilded = undefined;
+  data.gilded = post.gilded;
   data.netUps = data.upvotes - data.downvotes;
 
   function getTags(text: string): string[] {
-    if (text !== null || text !== undefined && text.includes("|") === true) {
+    if (text !== null || (text !== undefined && text.includes("|") === true)) {
       return text.split("|");
     } else {
       return null;

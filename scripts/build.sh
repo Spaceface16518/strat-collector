@@ -6,7 +6,7 @@ echo "App built"
 echo "Building Modules..."
 tsc ./modules/process.ts # process module
 tsc ./modules/export.ts # export module
-tsc ./modules/mongo.ts # mongo database module
-tsc ./modules/models/strats_posts_model
+tsc ./modules/mongo/find-all.ts # mongo database module
+tsc ./modules/mongo/models/post_model.ts
 echo "Modules Built"
 echo "Done"
