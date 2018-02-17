@@ -7,5 +7,6 @@ echo "Building Modules..."
 tsc ./modules/process.ts # process module
 tsc ./modules/export.ts # export module
 tsc ./modules/mongo.ts # mongo database module
+tsc ./modules/models/strats_posts_model
 echo "Modules Built"
 echo "Done"
