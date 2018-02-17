@@ -4,6 +4,8 @@ module.exports.findAll = ({
   mongoPass: string;
 }): any => {
   let uri = `mongodb+srv://Spaceface16518:${mongoPass}@stratbase-rncqk.mongodb.net/test`; // Set database uri
+  let uri = `mongodb://Spaceface16518:${mongoPass}@stratbase-shard-00-00-rncqk.mongodb.net:27017,stratbase-shard-00-01-rncqk.mongodb.net:27017,stratbase-shard-00-02-rncqk.mongodb.net:27017/Strats?ssl=true&replicaSet=Stratbase-shard-0&authSource=admin`; // Set database uri
+  console.log(uri);
   const mongo = require("mongoose"); // Import mongoose
   mongo.connect(uri); // Connect to mongo database using uri
   let db = mongo.connection; // Sustain connection by assigning it a memory address/variable
@@ -25,20 +27,11 @@ module.exports.findAll = ({
       gilded: Boolean,
       netUps: Number
     },
-    { collection: "Test" }
+    { collection: "Test" } // Specify collection
   );
-  var Test = mongo.model("Test", schema, "Test");
-  var doc = new Test({
-    title: "Test no 3",
-    author: { name: "Alien" },
-    body: "This is the third test, made (hopefully) by the application",
-    upvotes: 5,
-    downvotes: 0,
-    gilded: false,
-    netUps: 5
-  });
-  doc.save();
-  Test.find({}, (err, result) => {
+  var Strat = mongo.model("Strat", schema);
+
+  Strat.find({}, (err, result) => {
     if (!err) {
       console.log(result);
     } else {
@@ -46,4 +39,3 @@ module.exports.findAll = ({
     }
   });
 };
-    title: String,
