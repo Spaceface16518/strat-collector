@@ -3,7 +3,6 @@ module.exports.findAll = ({
 }: {
   mongoPass: string;
 }): any => {
-  let uri = `mongodb+srv://Spaceface16518:${mongoPass}@stratbase-rncqk.mongodb.net/test`; // Set database uri
   let uri = `mongodb://Spaceface16518:${mongoPass}@stratbase-shard-00-00-rncqk.mongodb.net:27017,stratbase-shard-00-01-rncqk.mongodb.net:27017,stratbase-shard-00-02-rncqk.mongodb.net:27017/Strats?ssl=true&replicaSet=Stratbase-shard-0&authSource=admin`; // Set database uri
   console.log(uri);
   const mongo = require("mongoose"); // Import mongoose
